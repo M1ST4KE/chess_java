@@ -1,4 +1,4 @@
-#Szachy online
+# Szachy online
 -------------------------------------
 Autorzy:
 Kamil Owczarz

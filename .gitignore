@@ -1,0 +1,5 @@
+server/.idea/
+server/target/
+
+client/.idea/
+client/target/

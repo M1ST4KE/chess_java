@@ -1,6 +1,7 @@
 package pl.chessonline.client.model;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Iterables;
 
 import javax.management.ImmutableDescriptor;
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public abstract class Player {
            final Collection<Move> opponentMoves) {
         this.board = board;
         this.playerKing = establishKing();
-        this.legalMoves = legalMoves;
+        this.legalMoves = ImmutableList.copyOf(Iterables.concat(legalMoves, calculateKingCastles(legalMoves, opponentMoves)));
         this.isInCheck = !Player.calculateAttacksOnTile(this.playerKing.getPiecePosition(), opponentMoves).isEmpty();
     }
 
@@ -31,7 +32,7 @@ public abstract class Player {
         return legalMoves;
     }
 
-    private static Collection<Move> calculateAttacksOnTile(int piecePosition, Collection<Move> moves) {
+    protected static Collection<Move> calculateAttacksOnTile(int piecePosition, Collection<Move> moves) {
         final List<Move> attackMoves = new ArrayList<>();
         for(final Move move : moves) {
             if(piecePosition == move.getDestinationCoordinate()) {
@@ -107,5 +108,7 @@ public abstract class Player {
     public abstract Alliance getAlliance();
 
     public abstract Player getOpponent();
+
+    protected abstract Collection<Move> calculateKingCastles(Collection<Move> playerLegals, Collection<Move> opponentsLegals);
 
 }

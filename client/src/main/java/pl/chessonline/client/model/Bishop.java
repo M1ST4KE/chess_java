@@ -19,13 +19,12 @@ public class Bishop extends Piece{
     @Override
     public Collection<Move> calculateLegalMoves(final Board board) {
 
-        final List<Move> legalMoves = new ArrayList<Move>();
+        final List<Move> legalMoves = new ArrayList<>();
 
         for (final int candidateCoordinateOffset : CANDIDATE_MOVE_VECTOR_COORDINATE){
             int candidateDestinationCoordinate = this.piecePosition;
 
             while(BoardUtils.isValidTileCoordinate(candidateDestinationCoordinate)){
-
                 if(isFirstColumnExclusion(candidateDestinationCoordinate, candidateCoordinateOffset) ||
                         isEightColumnExclusion(candidateDestinationCoordinate, candidateCoordinateOffset)) {
                     break;

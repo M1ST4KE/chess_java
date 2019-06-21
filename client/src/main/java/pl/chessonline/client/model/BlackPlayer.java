@@ -3,7 +3,7 @@ package pl.chessonline.client.model;
 import java.util.Collection;
 
 public class BlackPlayer extends Player{
-    public BlackPlayer(Board board, Collection<Move> whiteStandardLegalMoves, Collection<Move> blackStandardLEgalMoves) {
+    public BlackPlayer(final Board board, final Collection<Move> whiteStandardLegalMoves, final Collection<Move> blackStandardLEgalMoves) {
         super(board, blackStandardLEgalMoves, whiteStandardLegalMoves);
     }
 

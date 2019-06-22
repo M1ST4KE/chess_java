@@ -33,12 +33,22 @@ public abstract class Tile {
     public abstract boolean isTileOccupied();
     public abstract Piece getPiece();
 
+    public int getTileCoordinate() {
+        return this.tileCoordinate;
+    }
+
     //klasa reprezetująca puste pole
     public static final class EmptyTile extends Tile{
         private EmptyTile(final int coordinate){
             super(coordinate);
 
         }
+
+        @Override
+        public String toString() {
+            return "-";
+        }
+
         @Override
         public boolean isTileOccupied(){
             return false;
@@ -54,6 +64,11 @@ public abstract class Tile {
     public static final class OccupiedTile extends Tile {
 
         private final Piece pieceOnTile;
+
+        @Override
+        public String toString() {
+            return getPiece().getPieceAlliance().isBlack() ? getPiece().toString().toLowerCase() : getPiece().toString();
+        }
 
         private OccupiedTile(int tileCoordinate, Piece pieceOnTile){
             super(tileCoordinate);

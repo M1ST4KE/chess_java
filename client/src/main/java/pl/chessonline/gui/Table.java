@@ -59,14 +59,14 @@ public class Table {
 
     private JMenuBar createTableMenuBar()   {
         final JMenuBar tableMenuBar = new JMenuBar();
-        tableMenuBar.add(createFileMenu());
+        tableMenuBar.add(createGameMenu());
         tableMenuBar.add(createPreferencesMenu());
 
         return tableMenuBar;
     }
 
-    private JMenu createFileMenu()  {
-        final JMenu fileMenu = new JMenu("File");
+    private JMenu createGameMenu()  {
+        final JMenu gameMenu = new JMenu("Game");
 
         final JMenuItem openPGN = new JMenuItem("Load PGN file");
         openPGN.addActionListener(new ActionListener() {
@@ -75,7 +75,7 @@ public class Table {
                 System.out.println("Open up that pgn file!");
             }
         });
-        fileMenu.add(openPGN);
+        gameMenu.add(openPGN);
 
         final JMenuItem exitMenuItem = new  JMenuItem("Exit");
         exitMenuItem.addActionListener(new ActionListener() {
@@ -84,9 +84,9 @@ public class Table {
                 System.exit(0);
             }
         });
-        fileMenu.add(exitMenuItem);
+        gameMenu.add(exitMenuItem);
 
-        return fileMenu;
+        return gameMenu;
     }
 
     private JMenu createPreferencesMenu()   {

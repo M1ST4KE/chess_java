@@ -1,6 +1,6 @@
 package pl.chessonline.server;
 
-public class MessageBroker {
+public class ConnectionBroker {
 
 
 }

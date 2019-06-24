@@ -20,4 +20,17 @@ public class Game {
             System.out.println(e.getMessage());
         }
     }
+
+    public void gameLoop() {
+        while (continueLoopFlg) {
+            try {
+                Movement movement = players.get(0).recieveMessage();
+                players.get(1).sendMessage(movement);
+                movement = players.get(1).recieveMessage();
+                players.get(0).sendMessage(movement);
+            } catch (Exception e) {
+
+            }
+        }
+    }
 }

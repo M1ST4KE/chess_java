@@ -1,33 +1,24 @@
-package pl.chessonline.server;
+package pl.chessonline.client.connection;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.net.ServerSocket;
 import java.net.Socket;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
-public class Player {
-    private final ServerSocket serverSocket;
+public class Connection {
     private final Socket socket;
     private final DataInputStream input;
     private final DataOutputStream output;
 
-    public Player(String port) throws IOException {
-        this.serverSocket = new ServerSocket(Integer.parseInt(port));
-        this.socket = serverSocket.accept();
+    public Connection(String port) throws IOException {
+        this.socket = new Socket("localhost",Integer.parseInt(port));
         this.input = new DataInputStream(socket.getInputStream());
         this.output = new DataOutputStream(socket.getOutputStream());
     }
 
-    /**
-     * @return movement received from client
-     * @throws IOException when unable to receive message from client
-     * @throws JSONException when cannot parse received message
-     */
     public Movement recieveMessage() throws IOException, JSONException {
         JSONObject movement = new JSONObject((String)input.readUTF());
         int from = movement.getInt("from");
@@ -53,7 +44,6 @@ public class Player {
         output.flush();
         output.close();
         socket.close();
-        serverSocket.close();
     }
 
 }

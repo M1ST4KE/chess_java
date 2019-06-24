@@ -42,6 +42,10 @@ public class Connection {
         return port;
     }
 
+    public DataInputStream getInputStream() {
+        return input;
+    }
+
     /**
      * @throws IOException when connection already closed
      */

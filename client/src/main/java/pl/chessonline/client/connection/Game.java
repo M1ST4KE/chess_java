@@ -20,7 +20,7 @@ public class Game {
             try {
                 //todo potrzebuję tu wysyłay ruch
                 Movement movementToSend = new Movement();
-                connection.sendMessage(movementToSend.toString());
+                connection.sendMessage(movementToSend);
             }
         }
 
@@ -29,7 +29,7 @@ public class Game {
                 Movement movement = connection.recieveMessage();
                 //todo obsługa otrzymanego ruchu
                 Movement movementToSend = new Movement();
-                connection.sendMessage(movementToSend.toString());
+                connection.sendMessage(movementToSend);
                 //czekamy, albo wywalamy koniec gry
             } catch (JSONException e) {
                 e.printStackTrace();

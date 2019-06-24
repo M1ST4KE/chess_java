@@ -2,6 +2,9 @@ package pl.chessonline.gui;
 
 
 import com.google.common.collect.Lists;
+import pl.chessonline.client.connection.Connection;
+import pl.chessonline.client.connection.EndGame;
+import pl.chessonline.client.connection.Handshake;
 import pl.chessonline.client.model.*;
 
 import javax.swing.*;
@@ -23,6 +26,10 @@ import static javax.swing.SwingUtilities.isLeftMouseButton;
 import static javax.swing.SwingUtilities.isRightMouseButton;
 
 public class Table {
+
+    EndGame endGame;
+    Connection connection;
+    private ServerListener serverListener;
 
     private final JFrame gameFrame;
     private final BoardPanel boardPanel;
@@ -55,6 +62,24 @@ public class Table {
         this.highlightLegalMoves = true;
         this.gameFrame.add(this.boardPanel, BorderLayout.CENTER);
         this.gameFrame.setVisible(true);
+
+        Handshake handshake = null;
+        try {
+            handshake = new Handshake();
+            connection = new Connection(handshake.getGamePort());
+            endGame = new EndGame();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        this.serverListener = new ServerListener(connection.getInputStream());
+        this.serverListener.subscribe(()->{
+            final Move move = Move.MoveFactory.createMove(chessBoard, sourceTile.getTileCoordinate(),
+                    destinationTile.getTileCoordinate());
+            final MoveTransition transition = chessBoard.currentPlayer().makeMove(move);
+            if(transition.getMoveStatus().isDone()) {
+                chessBoard = transition.getTransitionBoard();
+            }});
     }
 
     private JMenuBar createTableMenuBar()   {
@@ -185,6 +210,9 @@ public class Table {
             assignTileColor();
             assignTilePieceIcon(chessBoard);
 
+            //todo napisać addServerListener
+
+
             addMouseListener(new MouseListener() {
                 @Override
                 public void mouseClicked(final MouseEvent e) {
@@ -220,6 +248,8 @@ public class Table {
                                 boardPanel.drawBoard(chessBoard);
                             }
                         });
+
+                        //todo przesłać na serwer ruch
                     }
                 }
 

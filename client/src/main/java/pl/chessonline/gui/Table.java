@@ -1,6 +1,5 @@
 package pl.chessonline.gui;
 
-
 import com.google.common.collect.Lists;
 import pl.chessonline.client.model.*;
 

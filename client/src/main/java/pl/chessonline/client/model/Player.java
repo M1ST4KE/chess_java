@@ -3,7 +3,6 @@ package pl.chessonline.client.model;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterables;
 
-import javax.management.ImmutableDescriptor;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;

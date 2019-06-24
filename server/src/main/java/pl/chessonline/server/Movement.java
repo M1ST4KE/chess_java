@@ -1,4 +1,4 @@
 package pl.chessonline.server;
 
-public class ServerController {
+public class Movement {
 }

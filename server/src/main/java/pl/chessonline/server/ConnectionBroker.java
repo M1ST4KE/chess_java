@@ -41,26 +41,19 @@ public class ConnectionBroker {
         }
     }
 
-    private void waitForBreak() throws IOException {
-        boolean b = true;
-        while (b) {
-            b = input.readBoolean();
-        }
-    }
-
     public void playGame() {
         Game game = new Game();
-
+        DisconnectManager observer = new DisconnectManager(input);
+        observer.subscribe(()->{game.breakGame();});
         Thread t = new Thread(game::gameLoop);
         t.start();
 
         try {
-            waitForBreak();
+            observer.gameBreakObserver();
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
 
-        game.breakGame();
     }
 
     private void closeConnection() throws IOException {

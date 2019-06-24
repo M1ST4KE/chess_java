@@ -1,5 +1,6 @@
 package pl.chessonline.server;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Game {
@@ -8,7 +9,7 @@ public class Game {
 
     public Game() {
         continueLoopFlg = true;
-        players = new ArrayList<Player>(2);
+        players = new ArrayList<>(2);
         try {
             players.set(0, new Player("6868"));
         } catch (Exception e) {
@@ -29,8 +30,23 @@ public class Game {
                 movement = players.get(1).recieveMessage();
                 players.get(0).sendMessage(movement);
             } catch (Exception e) {
-
+                System.out.println(e.getMessage());
+                break;
             }
         }
+
+        for (Player player : players) {
+            try {
+                player.closeConnection();
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
+        continueLoopFlg = false;
+    }
+
+    public void breakGame() {
+        continueLoopFlg = false;
     }
 }

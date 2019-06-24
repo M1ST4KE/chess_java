@@ -1,6 +1,5 @@
 package pl.chessonline.gui;
 
-
 import com.google.common.collect.Lists;
 import pl.chessonline.client.model.*;
 
@@ -26,7 +25,7 @@ public class Table {
 
     private final JFrame gameFrame;
     private final BoardPanel boardPanel;
-    private Board chessBoard;
+    public Board chessBoard;
 
     private Tile sourceTile;
     private Tile destinationTile;
@@ -42,6 +41,7 @@ public class Table {
 
     private Color lightTileColor = Color.decode("#FFFFFF");
     private Color darkTileColor = Color.decode("#696969");
+    private Color choiceColor = Color.decode("#9ACD32");
 
     public Table()  {
         this.gameFrame = new JFrame("Chess game");
@@ -67,15 +67,6 @@ public class Table {
 
     private JMenu createGameMenu()  {
         final JMenu gameMenu = new JMenu("Game");
-
-        final JMenuItem openPGN = new JMenuItem("Load PGN file");
-        openPGN.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Open up that pgn file!");
-            }
-        });
-        gameMenu.add(openPGN);
 
         final JMenuItem exitMenuItem = new  JMenuItem("Exit");
         exitMenuItem.addActionListener(new ActionListener() {
@@ -174,7 +165,7 @@ public class Table {
         }
     }
 
-    private class TilePanel extends JPanel  {
+    public class TilePanel extends JPanel  {
 
         private final int tileId;
 
@@ -188,9 +179,6 @@ public class Table {
             addMouseListener(new MouseListener() {
                 @Override
                 public void mouseClicked(final MouseEvent e) {
-
-
-
                     if(isRightMouseButton(e)) {
                         sourceTile = null;
                         destinationTile = null;
@@ -218,6 +206,11 @@ public class Table {
                             @Override
                             public void run() {
                                 boardPanel.drawBoard(chessBoard);
+                                if(chessBoard.getTile(tileId).isTileOccupied()) {
+                                    if(chessBoard.getTile(tileId).isTileOccupied() && chessBoard.getTile(tileId).getPiece().getPieceAlliance() == chessBoard.currentPlayer().getAlliance()) {
+                                        setBackground(choiceColor);
+                                    }
+                                }
                             }
                         });
                     }
@@ -248,20 +241,20 @@ public class Table {
         }
 
         public void drawTile(final Board board) {
-            assignTileColor();;
+            assignTileColor();
             assignTilePieceIcon(board);
             highlightLegals(chessBoard);
             validate();
             repaint();
         }
 
-        private void assignTilePieceIcon(final Board board) {
+        public void assignTilePieceIcon(final Board board) {
             this.removeAll();
             if(board.getTile(this.tileId).isTileOccupied()) {
                 try {
                     final BufferedImage image =
                             ImageIO.read(new File(defaultPieceImagesPath + board.getTile(this.tileId).getPiece().getPieceAlliance().toString().substring(0, 1) +
-                            board.getTile(this.tileId).getPiece().toString() + ".gif"));
+                                    board.getTile(this.tileId).getPiece().toString() + ".gif"));
                     add(new JLabel(new ImageIcon(image)));
                 }   catch (IOException e)   {
                     e.printStackTrace();
@@ -269,7 +262,7 @@ public class Table {
             }
         }
 
-        private void highlightLegals(final Board board) {
+        public void highlightLegals(final Board board) {
             if(highlightLegalMoves)    {
                 for(final Move move : pieceLegalMoves(board))   {
                     if(move.getDestinationCoordinate() == this.tileId)  {
@@ -290,7 +283,7 @@ public class Table {
             return Collections.emptyList();
         }
 
-        private void assignTileColor()  {
+        public void assignTileColor()  {
             if(BoardUtils.FIRST_ROW[this.tileId]    ||  BoardUtils.THIRD_ROW[this.tileId]   ||
                     BoardUtils.FIFTH_ROW[this.tileId]   ||  BoardUtils.SEVENTH_ROW[this.tileId])    {
                 setBackground(this.tileId % 2 == 0 ? lightTileColor : darkTileColor);

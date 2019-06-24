@@ -19,6 +19,7 @@
                 </configuration>
             </plugin>
 
+
             <plugin>
                 <!-- Build an executable JAR -->
                 <groupId>org.apache.maven.plugins</groupId>
@@ -32,9 +33,33 @@
                             <mainClass>pl.chessonline.client.Main</mainClass>
                         </manifest>
                     </archive>
+
                 </configuration>
             </plugin>
-
+            <plugin>
+                <artifactId>maven-shade-plugin</artifactId>
+                <configuration>
+                    <artifactSet>
+                        <includes>
+                            <include>com.google.guava:*</include>
+                        </includes>
+                    </artifactSet>
+                    <relocations>
+                        <relocation>
+                            <pattern>com.google</pattern>
+                            <shadedPattern>my.organization.repackaged.com.google</shadedPattern>
+                        </relocation>
+                    </relocations>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
@@ -62,7 +87,7 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>18.0</version>
+            <version>20.0</version>
         </dependency>
         <dependency>
             <groupId>org.yaml</groupId>

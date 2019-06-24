@@ -13,4 +13,12 @@ public class Movement {
     public String toString() {
         return String.format("{\"from\": \"%d\", \"to\": \"%d\"}", from, to);
 }
+
+    public int getFrom() {
+        return from;
+    }
+
+    public int getTo() {
+        return to;
+    }
 }

@@ -2,9 +2,11 @@ package pl.chessonline.gui;
 
 
 import com.google.common.collect.Lists;
+import org.json.JSONException;
 import pl.chessonline.client.connection.Connection;
 import pl.chessonline.client.connection.EndGame;
 import pl.chessonline.client.connection.Handshake;
+import pl.chessonline.client.connection.Movement;
 import pl.chessonline.client.model.*;
 
 import javax.swing.*;
@@ -238,9 +240,30 @@ public class Table {
                                 chessBoard = transition.getTransitionBoard();
                                 //TODO add the move that was made to the move log
                             }
+
+                            try {
+                                connection.sendMessage(new Movement(sourceTile.getTileCoordinate(),
+                                        destinationTile.getTileCoordinate()));
+                            } catch (IOException ex) {
+                                ex.printStackTrace();
+                            }
+
                             sourceTile = null;
                             destinationTile = null;
                             humanMovedPiece = null;
+
+                            Movement movement;
+                            try {
+                                movement = connection.recieveMessage();
+
+                                final Move opponentMove = Move.MoveFactory.createMove(chessBoard, movement.getFrom(), movement.getTo());
+                                final MoveTransition opponentTransition = chessBoard.currentPlayer().makeMove(opponentMove);
+                                if (opponentTransition.getMoveStatus().isDone()) {
+                                    chessBoard = opponentTransition.getTransitionBoard();
+                                }
+                            } catch (IOException | JSONException ex) {
+                                ex.printStackTrace();
+                            }
                         }
                         SwingUtilities.invokeLater(new Runnable() {
                             @Override
@@ -249,7 +272,7 @@ public class Table {
                             }
                         });
 
-                        //todo przesłać na serwer ruch
+
                     }
                 }
 

@@ -12,9 +12,11 @@ public class Connection {
     private final Socket socket;
     private final DataInputStream input;
     private final DataOutputStream output;
+    private int port;
 
-    public Connection(String port) throws IOException {
-        this.socket = new Socket("localhost",Integer.parseInt(port));
+    public Connection(int port) throws IOException {
+        this.port = port;
+        this.socket = new Socket("localhost",port);
         this.input = new DataInputStream(socket.getInputStream());
         this.output = new DataOutputStream(socket.getOutputStream());
     }
@@ -34,6 +36,10 @@ public class Connection {
         output.flush();
         output.writeUTF(movement.toString());
         output.flush();
+    }
+
+    public int getPort() {
+        return port;
     }
 
     /**

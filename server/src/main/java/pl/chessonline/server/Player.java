@@ -28,10 +28,10 @@ public class Player {
      * @throws IOException when unable to receive message from client
      * @throws JSONException when cannot parse received message
      */
-    public Movement recieveMessage() throws IOException, JSONException {
-        JSONObject movement = new JSONObject((String)input.readUTF());
-        int from = movement.getInt("from");
-        int to = movement.getInt("to");
+    public Movement recieveMessage() throws IOException {
+        String fromTo = (String)input.readUTF();
+        int from = (fromTo.charAt(0) - '0') * 10 + (fromTo.charAt(1) - '0');
+        int to = (fromTo.charAt(2) - '0') * 10 + (fromTo.charAt(3) - '0');
         return new Movement(from, to);
     }
 

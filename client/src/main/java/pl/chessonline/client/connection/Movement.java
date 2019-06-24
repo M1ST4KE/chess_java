@@ -11,7 +11,7 @@ public class Movement {
 
     @Override
     public String toString() {
-        return String.format("{\"from\": \"%d\", \"to\": \"%d\"}", from, to);
+        return String.format("%d%d", from, to);
 }
 
     public int getFrom() {

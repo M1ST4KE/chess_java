@@ -1,7 +1,7 @@
 package pl.chessonline.gui;
 
 import com.google.common.collect.Lists;
-import org.json.JSONException;
+//import org.json.*;
 import pl.chessonline.client.connection.Connection;
 import pl.chessonline.client.connection.EndGame;
 import pl.chessonline.client.connection.Handshake;
@@ -28,9 +28,8 @@ import static javax.swing.SwingUtilities.isRightMouseButton;
 
 public class Table {
 
-    EndGame endGame;
-    Connection connection;
-    private ServerListener serverListener;
+    private EndGame endGame;
+    private Connection connection;
 
     private final JFrame gameFrame;
     private final BoardPanel boardPanel;
@@ -240,7 +239,7 @@ public class Table {
                                 if (opponentTransition.getMoveStatus().isDone()) {
                                     chessBoard = opponentTransition.getTransitionBoard();
                                 }
-                            } catch (IOException | JSONException ex) {
+                            } catch (IOException ex) {
                                 ex.printStackTrace();
                             }
                         }

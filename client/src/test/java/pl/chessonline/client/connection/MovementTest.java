@@ -11,6 +11,6 @@ public class MovementTest {
         Movement movement = new Movement(from, to);
         Assert.assertNotNull(movement);
 
-        Assert.assertEquals("{\"from\": \"10\", \"to\": \"60\"}", movement.toString());
+        Assert.assertEquals("1060", movement.toString());
     }
 }

@@ -16,15 +16,15 @@ public class ConnectionBroker {
 
     public ConnectionBroker() throws IOException {
         playerNo = 0;
-        serverSocket = new ServerSocket(21370);
+        serverSocket = new ServerSocket(21371);
         socket = serverSocket.accept();
         input = new DataInputStream(socket.getInputStream());
         output = new DataOutputStream(socket.getOutputStream());
     }
 
     public void waitForPlayers() {
-        while ( playerNo <= 1) {
-            try {
+        try {
+            while ( playerNo <= 1) {
                 boolean b = input.readBoolean();
                 if (!b) {
                     throw new IOException();
@@ -35,9 +35,9 @@ public class ConnectionBroker {
                     output.writeInt(6969);
                 }
                 playerNo += 1;
-            } catch (IOException e) {
-                System.out.println(e.getMessage());
             }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
         }
     }
 

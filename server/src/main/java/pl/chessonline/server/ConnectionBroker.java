@@ -16,7 +16,7 @@ public class ConnectionBroker {
 
     public ConnectionBroker() throws IOException {
         playerNo = 0;
-        serverSocket = new ServerSocket(2137);
+        serverSocket = new ServerSocket(21370);
         socket = serverSocket.accept();
         input = new DataInputStream(socket.getInputStream());
         output = new DataOutputStream(socket.getOutputStream());

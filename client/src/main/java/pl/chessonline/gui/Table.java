@@ -73,15 +73,6 @@ public class Table {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        this.serverListener = new ServerListener(connection.getInputStream());
-        this.serverListener.subscribe(()->{
-            final Move move = Move.MoveFactory.createMove(chessBoard, sourceTile.getTileCoordinate(),
-                    destinationTile.getTileCoordinate());
-            final MoveTransition transition = chessBoard.currentPlayer().makeMove(move);
-            if(transition.getMoveStatus().isDone()) {
-                chessBoard = transition.getTransitionBoard();
-            }});
     }
 
     private JMenuBar createTableMenuBar()   {

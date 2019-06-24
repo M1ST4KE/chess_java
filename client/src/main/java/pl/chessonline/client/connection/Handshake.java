@@ -11,7 +11,7 @@ public class Handshake {
     private final DataOutputStream output;
 
     public Handshake() throws IOException {
-        this.socket = new Socket("localhost",2137);
+        this.socket = new Socket("localhost",21370);
         this.input = new DataInputStream(socket.getInputStream());
         this.output = new DataOutputStream(socket.getOutputStream());
     }

@@ -41,11 +41,8 @@ public class King extends Piece{
                         legalMoves.add(new AttackMove(board, this, candidateDestinationCoordinate, pieceAtDestination));
                     }
                 }
-
             }
-
         }
-
         return ImmutableList.copyOf(legalMoves);
     }
 

@@ -48,7 +48,6 @@ public class Pawn extends Piece {
                 if(board.getTile(candidateDestinationCoordinate).isTileOccupied()){
                     final Piece pieceCandidate = board.getTile(candidateDestinationCoordinate).getPiece();
                     if(this.pieceAlliance != pieceCandidate.getPieceAlliance()){
-                        //TODO more to do here a'ka delete
                         legalMoves.add(new MajorMove(board, this, candidateDestinationCoordinate));
                     }
                 }
@@ -59,7 +58,6 @@ public class Pawn extends Piece {
                 if(board.getTile(candidateDestinationCoordinate).isTileOccupied()){
                     final Piece pieceCandidate = board.getTile(candidateDestinationCoordinate).getPiece();
                     if(this.pieceAlliance != pieceCandidate.getPieceAlliance()){
-                        //TODO more to do here a'ka delete
                         legalMoves.add(new MajorMove(board, this, candidateDestinationCoordinate));
                     }
                 }

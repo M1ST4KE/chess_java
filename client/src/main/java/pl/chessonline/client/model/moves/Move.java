@@ -218,7 +218,6 @@ public abstract class Move {
                 builder.setPiece(piece);
             }
             builder.setPiece(this.movedPiece.movePiece(this));
-            // TODO: check first move on normal pieces
             builder.setPiece(new Rook(this.castleRookDestination, this.castleRook.getPieceAlliance()));
             builder.setMoveMaker(this.board.currentPlayer().getOpponent().getAlliance());
             return builder.build();

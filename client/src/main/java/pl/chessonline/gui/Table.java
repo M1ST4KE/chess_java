@@ -201,7 +201,6 @@ public class Table {
                             final MoveTransition transition = chessBoard.currentPlayer().makeMove(move);
                             if(transition.getMoveStatus().isDone()) {
                                 chessBoard = transition.getTransitionBoard();
-                                //TODO add the move that was made to the move log
                             }
                             sourceTile = null;
                             destinationTile = null;

@@ -38,7 +38,7 @@ public abstract class Player {
         return legalMoves;
     }
 
-    protected static Collection<Move> calculateAttacksOnTile(int piecePosition, Collection<Move> moves) {
+    public static Collection<Move> calculateAttacksOnTile(int piecePosition, Collection<Move> moves) {
         final List<Move> attackMoves = new ArrayList<>();
         for(final Move move : moves) {
             if(piecePosition == move.getDestinationCoordinate()) {

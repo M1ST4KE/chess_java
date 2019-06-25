@@ -1,12 +1,17 @@
 package pl.chessonline.client.model;
 
 import org.junit.Test;
+import pl.chessonline.client.model.board.*;
+import pl.chessonline.client.model.pieces.*;
+import pl.chessonline.client.model.alliance.*;
+import pl.chessonline.client.model.moves.*;
+import pl.chessonline.client.model.player.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class BoardTest {
+
     @Test
     public void initialBoardTest() {
 
@@ -36,7 +41,7 @@ public class BoardTest {
 
         final Board board = builder.build();
 
-        int amountOfAttacksOnBlackPawn = Player.calculateAttacksOnTile(33,board.whitePlayer().legalMoves).size();
+        int amountOfAttacksOnBlackPawn = Player.calculateAttacksOnTile(33,board.whitePlayer().getLegalMoves()).size();
 
         assertEquals(amountOfAttacksOnBlackPawn, 1);
 

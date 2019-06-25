@@ -1,5 +1,6 @@
-package pl.chessonline.client.model;
+package pl.chessonline.client.pieces;
 import com.google.common.collect.ImmutableMap;
+import pl.chessonline.client.model.board.BoardUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,7 +16,7 @@ public abstract class Tile {
     //hash map przechowująca pola
     public static Map<Integer, EmptyTile> createAllPossibleEmptyTiles() {
         final Map<Integer, EmptyTile> emptyTileMap = new HashMap<Integer, EmptyTile>();
-        for(int i =0; i< BoardUtils.NUM_TILES; i++){
+        for(int i = 0; i< BoardUtils.NUM_TILES; i++){
             emptyTileMap.put(i, new EmptyTile(i));
         }
         return ImmutableMap.copyOf(emptyTileMap);

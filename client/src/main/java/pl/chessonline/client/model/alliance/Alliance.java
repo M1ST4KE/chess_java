@@ -1,5 +1,9 @@
 package pl.chessonline.client.model;
 
+import pl.chessonline.client.model.player.BlackPlayer;
+import pl.chessonline.client.model.player.Player;
+import pl.chessonline.client.model.player.WhitePlayer;
+
 public enum Alliance {
     WHITE {
         @Override

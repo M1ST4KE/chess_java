@@ -1,12 +1,16 @@
-package pl.chessonline.client.model;
+package pl.chessonline.client.pieces;
 
 import com.google.common.collect.ImmutableList;
+import pl.chessonline.client.model.alliance.Alliance;
+import pl.chessonline.client.model.board.Board;
+import pl.chessonline.client.model.board.BoardUtils;
+import pl.chessonline.client.model.moves.Move;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import static pl.chessonline.client.model.Move.*;
+import static pl.chessonline.client.model.moves.Move.*;
 
 public class Bishop extends Piece{
 

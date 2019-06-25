@@ -1,4 +1,8 @@
-package pl.chessonline.client.model;
+package pl.chessonline.client.pieces;
+import pl.chessonline.client.model.alliance.Alliance;
+import pl.chessonline.client.model.board.Board;
+import pl.chessonline.client.model.moves.Move;
+
 import java.util.Collection;
 
 public abstract class Piece {

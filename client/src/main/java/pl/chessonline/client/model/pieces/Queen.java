@@ -1,18 +1,23 @@
-package pl.chessonline.client.model;
+package pl.chessonline.client.pieces;
 
 import com.google.common.collect.ImmutableList;
+import pl.chessonline.client.model.alliance.Alliance;
+import pl.chessonline.client.model.board.Board;
+import pl.chessonline.client.model.board.BoardUtils;
+import pl.chessonline.client.model.moves.Move;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import static pl.chessonline.client.model.Move.*;
+import static pl.chessonline.client.model.moves.Move.*;
 
-public class Rook extends Piece {
-    private final static int[] CANDIDATE_MOVE_VECTOR_COORDINATE = {-8, -1, 1, 8};
+public class Queen extends Piece{
 
-    public Rook(final int piecePosition, final Alliance pieceAlliance) {
-        super(PieceType.ROOK, piecePosition, pieceAlliance);
+    private final static int[] CANDIDATE_MOVE_VECTOR_COORDINATE = {-9, -8, -7, -1, 1, 7, 8, 9};
+
+    public Queen(final int piecePosition, final Alliance pieceAlliance) {
+        super(PieceType.QUEEN, piecePosition, pieceAlliance);
     }
 
     @Override
@@ -51,21 +56,20 @@ public class Rook extends Piece {
     }
 
     @Override
-    public Rook movePiece(final Move move) {
-        return new Rook(move.getDestinationCoordinate(), move.getMovedPiece().getPieceAlliance());
+    public Queen movePiece(final Move move) {
+        return new Queen(move.getDestinationCoordinate(), move.getMovedPiece().getPieceAlliance());
     }
 
     @Override
     public String toString(){
-        return PieceType.ROOK.toString();
+        return PieceType.QUEEN.toString();
     }
 
     private static boolean isFirstColumnExclusion(final int currentPosition, final int candidateOffset){
-        return BoardUtils.FIRST_COLUMN[currentPosition] && (candidateOffset == -1);
+        return BoardUtils.FIRST_COLUMN[currentPosition] && (candidateOffset == -9 || candidateOffset == 7 || candidateOffset == -1);
     }
 
     private static boolean isEightColumnExclusion(final int currentPosition, final int candidateOffset){
-        return BoardUtils.EIGHTH_COLUMN[currentPosition] && (candidateOffset == 1);
+        return BoardUtils.EIGHTH_COLUMN[currentPosition] && (candidateOffset == -7 || candidateOffset == 9 || candidateOffset == 1);
     }
-
 }

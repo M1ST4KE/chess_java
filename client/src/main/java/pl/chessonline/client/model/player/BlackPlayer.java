@@ -1,8 +1,14 @@
-package pl.chessonline.client.model;
+package pl.chessonline.client.model.player;
 
 import com.google.common.collect.ImmutableList;
-import pl.chessonline.client.model.Move.KingSideCastleMove;
-import pl.chessonline.client.model.Move.QueenSideCastleMove;
+import pl.chessonline.client.model.alliance.Alliance;
+import pl.chessonline.client.model.pieces.Piece;
+import pl.chessonline.client.model.pieces.Rook;
+import pl.chessonline.client.model.pieces.Tile;
+import pl.chessonline.client.model.board.Board;
+import pl.chessonline.client.model.moves.Move;
+import pl.chessonline.client.model.moves.Move.KingSideCastleMove;
+import pl.chessonline.client.model.moves.Move.QueenSideCastleMove;
 
 import java.util.ArrayList;
 import java.util.Collection;

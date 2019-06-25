@@ -1,4 +1,4 @@
-package pl.chessonline.client.pieces;
+package pl.chessonline.client.model.pieces;
 import pl.chessonline.client.model.alliance.Alliance;
 import pl.chessonline.client.model.board.Board;
 import pl.chessonline.client.model.moves.Move;

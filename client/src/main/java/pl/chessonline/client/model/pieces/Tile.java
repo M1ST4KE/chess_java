@@ -1,4 +1,4 @@
-package pl.chessonline.client.pieces;
+package pl.chessonline.client.model.pieces;
 import com.google.common.collect.ImmutableMap;
 import pl.chessonline.client.model.board.BoardUtils;
 

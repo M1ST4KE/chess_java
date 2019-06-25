@@ -1,9 +1,14 @@
-package pl.chessonline.client.model;
+package pl.chessonline.client.model.board;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterables;
+import pl.chessonline.client.model.alliance.Alliance;
+import pl.chessonline.client.model.moves.Move;
+import pl.chessonline.client.model.pieces.*;
+import pl.chessonline.client.model.player.BlackPlayer;
+import pl.chessonline.client.model.player.Player;
+import pl.chessonline.client.model.player.WhitePlayer;
 
-import java.rmi.MarshalledObject;
 import java.util.*;
 
 public class Board {

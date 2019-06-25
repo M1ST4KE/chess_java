@@ -1,4 +1,4 @@
-package pl.chessonline.client.model;
+package pl.chessonline.client.model.board;
 
 public class BoardUtils {
 

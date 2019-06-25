@@ -1,7 +1,14 @@
-package pl.chessonline.client.model;
+package pl.chessonline.client.model.player;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterables;
+import pl.chessonline.client.model.alliance.Alliance;
+import pl.chessonline.client.model.pieces.King;
+import pl.chessonline.client.model.pieces.Piece;
+import pl.chessonline.client.model.board.Board;
+import pl.chessonline.client.model.moves.Move;
+import pl.chessonline.client.model.moves.MoveStatus;
+import pl.chessonline.client.model.moves.MoveTransition;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -66,7 +73,7 @@ public abstract class Player {
 
     protected boolean hasEscapeMoves() {
         for(final Move move : this.legalMoves) {
-            final  MoveTransition transition = makeMove(move);
+            final MoveTransition transition = makeMove(move);
             if(transition.getMoveStatus().isDone()) {
                 return true;
             }

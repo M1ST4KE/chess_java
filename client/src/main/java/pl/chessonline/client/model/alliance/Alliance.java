@@ -1,4 +1,4 @@
-package pl.chessonline.client.model;
+package pl.chessonline.client.model.alliance;
 
 import pl.chessonline.client.model.player.BlackPlayer;
 import pl.chessonline.client.model.player.Player;

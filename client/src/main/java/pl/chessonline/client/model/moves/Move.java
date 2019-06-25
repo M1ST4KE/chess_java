@@ -1,6 +1,11 @@
-package pl.chessonline.client.model;
+package pl.chessonline.client.model.moves;
 
-import static pl.chessonline.client.model.Board.*;
+import pl.chessonline.client.model.board.Board;
+import pl.chessonline.client.model.pieces.Pawn;
+import pl.chessonline.client.model.pieces.Piece;
+import pl.chessonline.client.model.pieces.Rook;
+
+import static pl.chessonline.client.model.board.Board.*;
 
 public abstract class Move {
     final Board board;

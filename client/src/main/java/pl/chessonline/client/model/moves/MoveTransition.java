@@ -1,4 +1,6 @@
-package pl.chessonline.client.model;
+package pl.chessonline.client.model.moves;
+
+import pl.chessonline.client.model.board.Board;
 
 public class MoveTransition {
 

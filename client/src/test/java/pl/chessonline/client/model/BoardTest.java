@@ -4,7 +4,7 @@ import org.junit.Test;
 import pl.chessonline.client.model.board.*;
 import pl.chessonline.client.model.pieces.*;
 import pl.chessonline.client.model.alliance.*;
-import pl.chessonline.client.model.moves.*;
+import pl.chessonline.client.controller.moves.*;
 import pl.chessonline.client.model.player.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

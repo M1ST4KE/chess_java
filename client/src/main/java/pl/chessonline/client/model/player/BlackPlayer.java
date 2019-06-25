@@ -6,9 +6,9 @@ import pl.chessonline.client.model.pieces.Piece;
 import pl.chessonline.client.model.pieces.Rook;
 import pl.chessonline.client.model.pieces.Tile;
 import pl.chessonline.client.model.board.Board;
-import pl.chessonline.client.model.moves.Move;
-import pl.chessonline.client.model.moves.Move.KingSideCastleMove;
-import pl.chessonline.client.model.moves.Move.QueenSideCastleMove;
+import pl.chessonline.client.controller.moves.Move;
+import pl.chessonline.client.controller.moves.Move.KingSideCastleMove;
+import pl.chessonline.client.controller.moves.Move.QueenSideCastleMove;
 
 import java.util.ArrayList;
 import java.util.Collection;

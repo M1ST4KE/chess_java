@@ -1,10 +1,10 @@
-package pl.chessonline.gui;
+package pl.chessonline.client.gui;
 
 import com.google.common.collect.Lists;
 import pl.chessonline.client.model.board.Board;
 import pl.chessonline.client.model.board.BoardUtils;
-import pl.chessonline.client.model.moves.Move;
-import pl.chessonline.client.model.moves.MoveTransition;
+import pl.chessonline.client.controller.moves.Move;
+import pl.chessonline.client.controller.moves.MoveTransition;
 import pl.chessonline.client.model.pieces.Piece;
 import pl.chessonline.client.model.pieces.Tile;
 

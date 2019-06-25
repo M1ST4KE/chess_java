@@ -4,13 +4,13 @@ import com.google.common.collect.ImmutableList;
 import pl.chessonline.client.model.alliance.Alliance;
 import pl.chessonline.client.model.board.Board;
 import pl.chessonline.client.model.board.BoardUtils;
-import pl.chessonline.client.model.moves.Move;
+import pl.chessonline.client.controller.moves.Move;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import static pl.chessonline.client.model.moves.Move.*;
+import static pl.chessonline.client.controller.moves.Move.*;
 
 public class King extends Piece{
     private final static int[] CANDIDATE_MOVE_COORDINATE = {-9, -8, -7, -1, 1, 7, 8, 9};

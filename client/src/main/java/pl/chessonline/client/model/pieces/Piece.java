@@ -1,7 +1,7 @@
 package pl.chessonline.client.model.pieces;
 import pl.chessonline.client.model.alliance.Alliance;
 import pl.chessonline.client.model.board.Board;
-import pl.chessonline.client.model.moves.Move;
+import pl.chessonline.client.controller.moves.Move;
 
 import java.util.Collection;
 

@@ -1,4 +1,4 @@
-package pl.chessonline.client.model.moves;
+package pl.chessonline.client.controller.moves;
 
 public enum MoveStatus {
     DONE {

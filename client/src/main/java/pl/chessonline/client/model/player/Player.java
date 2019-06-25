@@ -6,9 +6,9 @@ import pl.chessonline.client.model.alliance.Alliance;
 import pl.chessonline.client.model.pieces.King;
 import pl.chessonline.client.model.pieces.Piece;
 import pl.chessonline.client.model.board.Board;
-import pl.chessonline.client.model.moves.Move;
-import pl.chessonline.client.model.moves.MoveStatus;
-import pl.chessonline.client.model.moves.MoveTransition;
+import pl.chessonline.client.controller.moves.Move;
+import pl.chessonline.client.controller.moves.MoveStatus;
+import pl.chessonline.client.controller.moves.MoveTransition;
 
 import java.util.ArrayList;
 import java.util.Collection;

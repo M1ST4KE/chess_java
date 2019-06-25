@@ -6,13 +6,13 @@ import pl.chessonline.client.model.pieces.Piece;
 import pl.chessonline.client.model.pieces.Rook;
 import pl.chessonline.client.model.pieces.Tile;
 import pl.chessonline.client.model.board.Board;
-import pl.chessonline.client.model.moves.Move;
+import pl.chessonline.client.controller.moves.Move;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import static pl.chessonline.client.model.moves.Move.*;
+import static pl.chessonline.client.controller.moves.Move.*;
 
 public class WhitePlayer extends Player{
     public WhitePlayer(Board board, Collection<Move> whiteStandardLegalMoves, Collection<Move> blackStandardLEgalMoves) {
